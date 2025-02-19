@@ -6,7 +6,7 @@ interface ITodoProps{
 export const TodoComponent = ({item}: ITodoProps) => {
     return (
         <div>
-                <h3>{item.title}</h3>
+                <h3>{item.todo}</h3>
         </div>
     );
 };

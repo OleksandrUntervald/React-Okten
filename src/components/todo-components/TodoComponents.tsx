@@ -1,16 +1,14 @@
-import {TodoComponent} from "../todo-component/TodoComponent.tsx";
+
 import {useEffect, useState} from "react";
 import {ITodo} from "../../models/ITodo.ts";
+import {getAllTodos} from "../../services/api.services.ts";
+import {TodoComponent} from "../todo-component/TodoComponent.tsx";
 
 
 export const TodoComponents = () => {
     const [todos, setTodods] = useState<ITodo[]>([])
     useEffect(() =>{
-        fetch("https://jsonplaceholder.typicode.com/todos")
-            .then(value => value.json())
-            .then((iTodos: ITodo[] )=> {
-        setTodods(iTodos)
-            })
+        getAllTodos().then(({todos}) => setTodods(todos))
     }, [])
     return (
         <div>
