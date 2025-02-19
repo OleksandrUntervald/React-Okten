@@ -1,9 +1,12 @@
 import './App.css'
+import {FamilyComponent} from "./components/FamilyComponent/FamilyComponent.tsx";
 
 function App() {
 
   return (
-   <h1 className="text-3xl">Hello world</h1>
+      <div>
+        <FamilyComponent/>
+      </div>
   )
 }
 
