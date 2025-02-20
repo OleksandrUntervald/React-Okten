@@ -1,15 +1,22 @@
 import {useEffect, useState} from "react";
 import {IBaseResponseModel} from "../../models/IBaseResponseModel.ts";
 import {IUser} from "../../models/IUser.ts";
-import {getAll} from "../../services/general.api.services.ts";
 import {UserComponent} from "./UserComponent.tsx";
+import {getUsers} from "../../services/api.service.ts";
+import {useSearchParams} from "react-router-dom";
 
 export const UsersComponent = () => {
+    const [searchParams] = useSearchParams({page: '1'})
+
     const [ users, setUsers] = useState<IUser[]>([]);
-    useEffect(()=>{
-        getAll <IBaseResponseModel & {users: IUser[]}>('/users')
-            .then(({users}) => setUsers(users))
-    }, []);
+    useEffect(() => {
+        const currentPage = searchParams.get('page') || '1';
+        getUsers(currentPage).then(({users}: IBaseResponseModel) => {
+            setUsers(users);
+        });
+    }, [searchParams]);
+
+
     return (
        <div>
            {
