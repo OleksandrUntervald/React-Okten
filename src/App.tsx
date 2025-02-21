@@ -1,9 +1,14 @@
 import './App.css'
+import {Outlet} from "react-router-dom";
+import {Menu} from "./components/menu/Menu.tsx";
 
 function App() {
 
   return (
-   <h1 className="text-3xl">Hello world</h1>
+   <div>
+       <Menu/>
+       <Outlet/>
+   </div>
   )
 }
 
