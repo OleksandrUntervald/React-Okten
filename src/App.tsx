@@ -1,9 +1,22 @@
 import './App.css'
+import {UseFetch} from "./hooks/UseFetch.tsx";
 
 function App() {
+  const users =
+      UseFetch<{id: number, name: string}[]>('https://jsonplaceholder.typicode.com/users');
+
 
   return (
-   <h1 className="text-3xl">Hello world</h1>
+    <div>
+      {
+        users &&
+          users.map((user) => (
+              <div key={user.id}>
+                {user.id}: {user.name}
+              </div>
+          ))
+      }
+    </div>
   )
 }
 
