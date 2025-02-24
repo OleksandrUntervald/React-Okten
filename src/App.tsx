@@ -1,9 +1,12 @@
 import './App.css'
+import {Outlet} from "react-router";
 
 function App() {
 
   return (
-   <h1 className="text-3xl">Hello world</h1>
+    <div>
+      <Outlet/>
+    </div>
   )
 }
 
